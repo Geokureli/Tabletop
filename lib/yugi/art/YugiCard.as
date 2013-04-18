@@ -21,9 +21,7 @@ package yugi.art {
 			onDoubleTap = dblTap
 		}
 		
-		private function dblTap():void {
-			faceUp = !faceUp;
-		}
+		private function dblTap():void { faceUp = !faceUp; }
 	}
 
 }

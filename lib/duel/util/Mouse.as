@@ -14,14 +14,19 @@ package duel.util {
 	 */
 	public class Mouse {
 		static public var x:Number, y:Number;
-		static public var pressed:Boolean = false;
-		static private var lastPressed:Boolean = false;
+		static public var pressed:Boolean,
+							justPressed:Boolean,
+							justReleased:Boolean;
+		static private var lastPressed:Boolean;
+		static private var onTap:Function, onDoubleTap:Function;
 		
 		static public function init(stage:Stage):void {
 			stage.addEventListener(TouchEvent.TOUCH, touchHandle);
+			pressed = justPressed = justReleased = lastPressed = false;
 		}
 		static public function update():void {
-			
+			justPressed = !lastPressed &&  pressed;
+			justReleased = lastPressed && !pressed;
 			
 			lastPressed = pressed;
 		}
@@ -44,9 +49,10 @@ package duel.util {
 				case TouchPhase.BEGAN: pressed = true;  break;
 				case TouchPhase.ENDED:
 					pressed = false;
-					if (touch.tapCount == 2 && onDoubleTap) {
-						
-					}
+					if (touch.tapCount > 0 && onTap != null)
+						onDoubleTap();
+					if (touch.tapCount == 2 && onDoubleTap != null)
+						onDoubleTap();
 					break;
 			}
 			//trace(x, y);

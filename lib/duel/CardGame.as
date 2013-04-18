@@ -4,6 +4,7 @@ package duel {
 	import starling.display.DisplayObject;
 	import starling.events.EnterFrameEvent;
 	import starling.events.Event;
+	import duel.util.Mouse;
 	/**
 	 * ...
 	 * @author George
@@ -21,10 +22,11 @@ package duel {
 			removeEventListener(Event.ADDED_TO_STAGE, onAdded);
 			
 			addEventListener(EnterFrameEvent.ENTER_FRAME, update);
+			//Mouse.init(stage);
 		}
 		
-		private function update(e:EnterFrameEvent):void {
-			
+		protected function update(e:EnterFrameEvent):void {
+			//Mouse.update();
 		}
 		override public function addChildAt(child:DisplayObject, index:int):DisplayObject {			
 			if(child is Piece)
