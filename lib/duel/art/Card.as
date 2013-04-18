@@ -1,6 +1,7 @@
 package duel.art {
 	import starling.display.Image;
 	import starling.display.Sprite;
+	import starling.events.TouchEvent;
 	import starling.textures.Texture;
 	
 	/**

@@ -14,6 +14,7 @@ package duel {
 		public function CardGame() {
 			super();
 			addEventListener(Event.ADDED_TO_STAGE, onAdded);
+			children = new <Piece>[];
 		}
 		
 		private function onAdded(e:Event):void {
