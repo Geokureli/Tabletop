@@ -45,13 +45,14 @@ package yugi {
 		}
 		
 		private function onStackTap(stack:Stack):void {
-			trace("stack")
+			
 			if (selected != null) {
 				//if (stack == selected)
 				
 				if (selected is Stack) {
 					
 					var hiliteStack:Stack = selected as Stack;
+					
 					if(hiliteStack.length > 0)
 						stack.add(hiliteStack.pop());
 				
@@ -62,7 +63,7 @@ package yugi {
 					stack.add(selected);
 					//trace(stack.onTap);
 				}
-				
+				selected.hilite = false;
 				selected = null;
 				return;
 			}
@@ -71,13 +72,12 @@ package yugi {
 		}
 		
 		private function onTap(card:Card):void {
-			trace("card");
+			
 			if (selected != null) {
 				selected.hilite = false;
-				//if (selected == card){
-					selected = null;
-					//return;
-				//}
+				selected = null;
+				if (selected == card)
+					return;
 			}
 			selected = card;
 			card.hilite = true;
