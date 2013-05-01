@@ -17,11 +17,12 @@ package yugi.art {
 		}
 		override protected function onAdd(e:Event):void {
 			super.onAdd(e);
-			draggable = touchable = true;
-			onDoubleTap = dblTap
+			//draggable = 
+			touchable = true;
+			//onDoubleTap = dblTap
 		}
 		
-		private function dblTap():void { faceUp = !faceUp; }
+		//private function dblTap():void { faceUp = !faceUp; }
 	}
 
 }

@@ -14,6 +14,8 @@ package duel.art {
 		protected var frontImg:Image,
 						backImg:Image;
 		
+		internal var something:Boolean;
+		
 		public function Card() {
 			super();
 			_faceUp = true;
@@ -26,8 +28,8 @@ package duel.art {
 		public function embedImage(graphic:Class, isFront:Boolean = true):void {
 			
 			if (isFront) {
-				
 				frontImg = Image.fromBitmap(new graphic());
+				
 				// --- DISPLAY FRONT
 				if (faceUp) addChild(frontImg);
 			} else {

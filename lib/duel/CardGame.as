@@ -18,7 +18,7 @@ package duel {
 			children = new <Piece>[];
 		}
 		
-		private function onAdded(e:Event):void {
+		protected function onAdded(e:Event):void {
 			removeEventListener(Event.ADDED_TO_STAGE, onAdded);
 			
 			addEventListener(EnterFrameEvent.ENTER_FRAME, update);

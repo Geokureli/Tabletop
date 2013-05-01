@@ -6,12 +6,15 @@ package yugi.mobile{
 	import flash.display.StageScaleMode;
 	import flash.ui.Multitouch;
 	import flash.ui.MultitouchInputMode;
+	import starling.core.Starling;
+	import yugi.Yugioh;
 	
 	/**
 	 * ...
 	 * @author George
 	 */
 	public class Main extends Sprite {
+		private var starling:Starling;
 		
 		public function Main():void {
 			stage.scaleMode = StageScaleMode.NO_SCALE;
@@ -21,7 +24,8 @@ package yugi.mobile{
 			// touch or gesture?
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 			
-			// entry point
+			starling = new Starling(Yugioh, stage);
+			starling.start();
 			
 			// new to AIR? please read *carefully* the readme.txt files!
 		}
