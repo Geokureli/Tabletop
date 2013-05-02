@@ -1,4 +1,5 @@
 package duel.art {
+	import duel.util.Random;
 	import starling.display.Quad;
 	import starling.display.Sprite;
 	
@@ -35,6 +36,27 @@ package duel.art {
 			//piece.touchable = true;
 			
 			return piece;
+		}
+		
+		public function Shufle():void
+		{
+			
+			var i:int = 0;
+			for(i = 0; i < pieces.length; i++ )
+			{
+				
+				var tmp:Piece = pieces[i]  
+				var randomInt:int = Random.between(0, pieces.length); 
+				pieces	[i] = Piece[randomInt];                         
+				Piece[randomInt] = tmp;                            
+				
+			}
+		}
+		
+		public function shuffling():void 
+		{
+			var temp:Piece; 
+		   
 		}
 		public function get length():int { return pieces.length; }
 	}

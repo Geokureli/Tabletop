@@ -1,4 +1,5 @@
 package duel.art {
+	import flash.display.InteractiveObject;
 	import flash.geom.Point;
 	import starling.events.Event;
 	import starling.events.Touch;
@@ -93,6 +94,8 @@ package duel.art {
 									
 			_hilite = value;
 		}
+		
+	
 		
 	}
 
