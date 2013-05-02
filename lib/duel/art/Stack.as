@@ -47,17 +47,12 @@ package duel.art {
 				
 				var tmp:Piece = pieces[i]  
 				var randomInt:int = Random.between(0, pieces.length); 
-				pieces	[i] = Piece[randomInt];                         
-				Piece[randomInt] = tmp;                            
+				pieces	[i] = pieces[randomInt];                         
+				pieces[randomInt] = tmp;                            
 				
 			}
 		}
-		
-		public function shuffling():void 
-		{
-			var temp:Piece; 
-		   
-		}
+
 		public function get length():int { return pieces.length; }
 	}
 }
