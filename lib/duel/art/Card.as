@@ -1,4 +1,7 @@
 package duel.art {
+	import flash.display.Bitmap;
+	import starling.display.Quad;
+	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.TouchEvent;
@@ -9,10 +12,11 @@ package duel.art {
 	 * @author George
 	 */
 	public class Card extends Piece {
+		
 		private var _faceUp:Boolean;
 		
-		protected var frontImg:Image,
-						backImg:Image;
+		protected var frontImg:DisplayObject,
+						backImg:DisplayObject;
 		
 		internal var something:Boolean;
 		
@@ -36,7 +40,7 @@ package duel.art {
 				
 				backImg = Image.fromBitmap(new graphic());
 				// --- DISPLAY BACK
-				if (!faceUp) addChild(frontImg);
+				if (!faceUp) addChild(backImg);
 			}
 			
 		}
@@ -47,7 +51,7 @@ package duel.art {
 		public function set faceUp(value:Boolean):void {
 			if (_faceUp == value) return;
 			
-			var face:Image = _faceUp ? frontImg : backImg;
+			var face:DisplayObject = _faceUp ? frontImg : backImg;
 			// --- REMOVE OPPOSITE SIDE FROM DISPLAY
 			if (contains(face)) removeChild(face);
 			
@@ -56,6 +60,20 @@ package duel.art {
 			face = _faceUp ? frontImg : backImg;
 			// --- DISPLAY NEW SIDE
 			if (face != null) addChild(face);
+		}
+		
+		public function addBitmap(graphic:Bitmap, isFront:Boolean = true):void {
+			if (isFront) {
+				frontImg = Image.fromBitmap(graphic);
+				
+				// --- DISPLAY FRONT
+				if (faceUp) addChild(frontImg);
+			} else {
+				
+				backImg = Image.fromBitmap(graphic);
+				// --- DISPLAY BACK
+				if (!faceUp) addChild(backImg);
+			}
 		}
 		
 	}

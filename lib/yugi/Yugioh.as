@@ -23,24 +23,31 @@ package yugi {
 		override protected function onAdded(e:Event):void {
 			super.onAdded(e);
 			
-			addChild(stack1 = new Stack());
-			stack1.x = 200;
-			stack1.y = stage.stageHeight - stack1.height;
-			stack1.onTap = onStackTap;
-			stack1.touchable = true;
-			
-			addChild(stack2 = new Stack());
-			stack2.x = 400;
-			stack2.y = stage.stageHeight - stack2.height;
-			stack2.onTap = onStackTap;
-			stack2.touchable = true;
+			var stack:Stack;
+			var x:Number = 50;
+			var y:Number = 0;
+			for (var i:int = 0; i < 7; i++) {
+				y = 0;
+				for (var j:int = 0; j < 2; j++) {
+					addChild(stack = new Stack());
+					stack.x = 10 + x;
+					stack.y = stage.stageHeight - (stack.height+20)*2 - y;
+					stack.onTap = onStackTap;
+					stack.touchable = true;
+					y -= stack.height + 10;
+					stack.displayMode = Stack.SPREAD
+				}
+				stack.displayMode = Stack.STACK;
+				
+				x += 100;
+			}
 			
 			var card:Card;
-			for (var x:int = 0; x < stage.stageWidth; x += 100) {
-				addChild(card = new YugiCard());
-				card.x = x;
-				card.y = 50;
-				card.onTap = onTap;
+			for (i = 0; i < 40; i++) {
+				stack.add(card = new YugiCard());
+				//card.x = x;
+				//card.y = 50;
+				//card.onTap = onTap;
 			}
 		}
 		
@@ -58,6 +65,7 @@ package yugi {
 				
 					//selected = null;
 				} else if (selected is Card) {
+					
 					selected.onTap = null
 					selected.hilite = false;
 					stack.add(selected);
